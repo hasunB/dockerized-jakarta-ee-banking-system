@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+        <display-name>Banking System</display-name>
+
+        <security-constraint>
+            <web-resource-collection>
+                <web-resource-name>User Area</web-resource-name>
+                <url-pattern>/user/*</url-pattern>
+            </web-resource-collection>
+            <auth-constraint>
+                <role-name>SUPER_ADMIN</role-name>
+                <role-name>ADMIN</role-name>
+                <role-name>USER</role-name>
+                <role-name>CUSTOMER</role-name>
+            </auth-constraint>
+        </security-constraint>
+
+        <security-constraint>
+            <web-resource-collection>
+                <web-resource-name>Admin Area</web-resource-name>
+                <url-pattern>/admin/*</url-pattern>
+            </web-resource-collection>
+            <auth-constraint>
+                <role-name>SUPER_ADMIN</role-name>
+                <role-name>ADMIN</role-name>
+            </auth-constraint>
+        </security-constraint>
+
+        <security-role>
+            <role-name>SUPER_ADMIN</role-name>
+        </security-role>
+        <security-role>
+            <role-name>ADMIN</role-name>
+        </security-role>
+        <security-role>
+            <role-name>USER</role-name>
+        </security-role>
+        <security-role>
+            <role-name>CUSTOMER</role-name>
+        </security-role>
+
+    <!--    <error-page>-->
+    <!--        <exception-type>lk.jiat.app.core.exception.LoginFailedException</exception-type>-->
+    <!--        <location>/login_error.jsp</location>-->
+    <!--    </error-page>-->
+
+    <!--    <error-page>-->
+    <!--        <exception-type>java.lang.RuntimeException</exception-type>-->
+    <!--        <location>/500.jsp</location>-->
+    <!--    </error-page>-->
+
+    <!--    <error-page>-->
+    <!--        <exception-type>jakarta.ejb.EJBAccessException</exception-type>-->
+    <!--        <location>/unauthorized.jsp</location>-->
+    <!--    </error-page>-->
+
+    <!--    <error-page>-->
+    <!--        <error-code>403</error-code>-->
+    <!--        <location>/unauthorized.jsp</location>-->
+    <!--    </error-page>-->
+</web-app>

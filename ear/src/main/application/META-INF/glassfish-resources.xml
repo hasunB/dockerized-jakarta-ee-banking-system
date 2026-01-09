@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE resources PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Resource Definitions//EN" "http://glassfish.org/dtds/glassfish-resources_1_5.dtd">
+<resources>
+    <jdbc-connection-pool
+            name="BankPool"
+            res-type="javax.sql.DataSource"
+            datasource-classname="com.mysql.cj.jdbc.MysqlDataSource"
+            ping="true">
+        <property name="ServerName" value="mysqldb"/>
+        <property name="PortNumber" value="3306"/>
+        <property name="DatabaseName" value="bankingdb"/>
+        <property name="User" value="root"/>
+        <property name="Password" value="rootpassword"/>
+        <property name="URL" value="jdbc:mysql://mysqldb:3306/bankingdb"/>
+    </jdbc-connection-pool>
+
+    <jdbc-resource
+            jndi-name="jdbc/bank_system_connection"
+            pool-name="BankPool"/>
+</resources>
