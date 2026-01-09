@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence" version="3.0">
+    <persistence-unit name="BankPU" transaction-type="JTA">
+        <jta-data-source>jdbc/bank_system_connection</jta-data-source>
+        <class>org.example.ee.core.model.User</class>
+        <class>org.example.ee.core.model.Customer</class>
+        <class>org.example.ee.core.model.Account</class>
+        <class>org.example.ee.core.model.Admin</class>
+        <class>org.example.ee.core.model.OtpToken</class>
+        <class>org.example.ee.core.model.TransactionLog</class>
+        <class>org.example.ee.core.model.ScheduledTransfer</class>
+<!--        <shared-cache-mode>NONE</shared-cache-mode>-->
+        <shared-cache-mode>DISABLE_SELECTIVE</shared-cache-mode>
+        <properties>
+            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+            <property name="jakarta.persistence.sharedCache.mode" value="NONE"/>
+            <property name="eclipselink.cache.shared.default" value="false"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+            <property name="hibernate.show_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>

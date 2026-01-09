@@ -1,0 +1,5 @@
+FROM mysql:8.0
+
+# Copy the initialization script into the auto-run directory
+# MySQL will execute this script the first time the container starts
+COPY docker/database.sql /docker-entrypoint-initdb.d/
