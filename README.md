@@ -54,27 +54,33 @@ You do not need Java, Maven, or SQL files installed. You only need Docker.
 1.  Create a `docker-compose.yaml` file with the following content:
 
     ```yaml
-    version: "3.9"
+    # version: "3.9"
     services:
-      mysql:
+    mysql:
         image: hasunb/jakarta-ee-multi-module-banking-system-db:latest
         container_name: bank_mysql
         restart: always
+        environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: banking_db
+        MYSQL_USER: bank_user
+        MYSQL_PASSWORD: bank_pass
         healthcheck:
-          test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
-          interval: 5s
-          timeout: 5s
-          retries: 10
-    
-      payara:
+        test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+        interval: 5s
+        timeout: 5s
+        retries: 10
+
+    payara:
         image: hasunb/jakarta-ee-multi-module-banking-system:latest
         container_name: bank_payara
+         # restart: always (optional: if the container failed start it start again)
         depends_on:
-          mysql:
+        mysql:
             condition: service_healthy
         ports:
-          - "8080:8080"
-          - "4848:4848"
+        - "8080:8080"
+        - "4848:4848"
     ```
 
 2.  **Start the application:**
