@@ -61,10 +61,10 @@ You do not need Java, Maven, or SQL files installed. You only need Docker.
         container_name: bank_mysql
         restart: always
         environment:
-        MYSQL_ROOT_PASSWORD: root
-        MYSQL_DATABASE: banking_db
-        MYSQL_USER: bank_user
-        MYSQL_PASSWORD: bank_pass
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: banking_db
+            MYSQL_USER: bank_user
+            MYSQL_PASSWORD: bank_pass
         healthcheck:
         test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
         interval: 5s
